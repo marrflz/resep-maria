@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resep Maria</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: #f6f0ff;
+            color: #444;
+        }
+
+        nav {
+            background: linear-gradient(90deg, #c9a7ff, #e3d4ff);
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 12px rgba(140, 90, 200, 0.2);
+        }
+
+        nav .logo {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: #b388ff;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        nav .title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #4b2e83;
+        }
+
+        nav .subtitle {
+            font-size: 14px;
+            color: #5a3fa3;
+        }
+
+        .nav-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .search-container {
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-box {
+            width: 90%;
+            max-width: 650px;
+            background: white;
+            padding: 14px 20px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 16px rgba(150, 120, 200, 0.15);
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 15px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 10px 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 4px 18px rgba(150, 120, 200, 0.15);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 10px 28px rgba(150, 120, 200, 0.25);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 18px;
+        }
+
+        .card-body h3 {
+            margin: 0 0 10px;
+            color: #7e52c6;
+            font-size: 20px;
+        }
+
+        .toggle-btn {
+            padding: 8px 12px;
+            border: none;
+            background-color: #c9a7ff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #b388ff;
+        }
+
+        .detail {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 1.5;
+            color: #5a3fa3;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: #d9c2ff;
+            padding: 20px;
+            text-align: center;
+            color: #4b2e83;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">M</div>
+        <div class="nav-text">
+            <span class="title">Resep Maria</span>
+            <span class="subtitle">Kumpulan resep pilihan terbaik</span>
+        </div>
+    </nav>
+
+    <div style="background:#efdfff; padding:18px; text-align:center; color:#4b2e83; font-weight:600; box-shadow:0 4px 12px rgba(150,120,200,0.15);">
+        ✨ Dari dapur sederhana Maria, lahirlah kumpulan resep favorit keluarga yang kini dibagikan untuk semua! ✨
+    </div>
+
+    <div class="hero-banner" style="margin:20px auto; max-width:1100px; background:#f3e8ff; padding:28px; border-radius:20px; box-shadow:0 4px 16px rgba(150,120,200,0.18); text-align:center;">
+        <h2 style="color:#7e52c6; margin-bottom:10px; font-size:26px; font-weight:700;">Selamat Datang di Resep Maria!</h2>
+        <p style="color:#5a3fa3; font-size:15px; line-height:1.6; font-weight:500;">
+            Di dapur kecilku, setiap resep punya cerita—kadang berantakan, kadang gosong,
+            tapi selalu penuh cinta. 💜✨ <br>
+            Kata orang, masakan yang enak bisa menyatukan hati… tapi bagiku, masakan yang
+            gagal justru lebih dramatis.
+        </p>
+    </div>
+
+    <div class="search-container">
+        <div class="search-box">
+            <input type="text" placeholder="Cari resep, bahan, pengguna..." />
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="grid">
+
+            <!-- 1. Rendang -->
+            <div class="card">
+                <img src="foto1.jpg" alt="Rendang Sapi">
+                <div class="card-body">
+                    <h3>Rendang Sapi</h3>
+                    <button class="toggle-btn" onclick="toggleDetail(this)">Lihat Detail</button>
+                    <div class="detail">
+                        <p><strong>Bahan:</strong> daging sapi, santan, serai, daun jeruk, cabai, bawang...</p>
+                        <p><strong>Cara Masak:</strong> Tumis bumbu, masukkan daging, tuang santan, masak hingga empuk dan mengering.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Ayam Geprek -->
+            <div class="card">
+                <img src="foto2.jpg" alt="Ayam Geprek">
+                <div class="card-body">
+                    <h3>Ayam Geprek</h3>
+                    <button class="toggle-btn" onclick="toggleDetail(this)">Lihat Detail</button>
+                    <div class="detail">
+                        <p><strong>Bahan:</strong> ayam, tepung kriuk, cabai rawit, bawang putih...</p>
+                        <p><strong>Cara Masak:</strong> Goreng ayam tepung, ulek sambal, geprek ayam bersama sambal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Sayur Asem -->
+            <div class="card">
+                <img src="foto3.jpg" alt="Sayur Asem">
+                <div class="card-body">
+                    <h3>Sayur Asem</h3>
+                    <button class="toggle-btn" onclick="toggleDetail(this)">Lihat Detail</button>
+                    <div class="detail">
+                        <p><strong>Bahan:</strong> kacang panjang, labu, jagung, asem, cabai...</p>
+                        <p><strong>Cara Masak:</strong> Rebus bahan, masukkan bumbu halus dan asem.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Mie Goreng Jawa -->
+            <div class="card">
+                <img src="foto4.jpg" alt="Mie Goreng Jawa">
+                <div class="card-body">
+                    <h3>Mie Goreng Jawa</h3>
+                    <button class="toggle-btn" onclick="toggleDetail(this)">Lihat Detail</button>
+                    <div class="detail">
+                        <p><strong>Bahan:</strong> mie, kecap manis, kol, ayam suwir, bawang...</p>
+                        <p><strong>Cara Masak:</strong> Tumis bumbu, masukkan mie dan kecap, aduk rata.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. Nasi Goreng -->
+            <div class="card">
+                <img src="foto5.jpg" alt="Nasi Goreng">
+                <div class="card-body">
+                    <h3>Nasi Goreng Spesial</h3>
+                    <button class="toggle-btn" onclick="toggleDetail(this)">Lihat Detail</button>
+                    <div class="detail">
+                        <p><strong>Bahan:</strong> nasi, kecap, telur, ayam, bawang putih...</p>
+                        <p><strong>Cara Masak:</strong> Tumis bumbu, masukkan telur, nasi, dan kecap.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Ayam Kecap -->
+            <div class="card">
+                <img src="foto6.jpg" alt="Ayam Kecap">
+                <div class="card-body">
+                    <h3>Ayam Kecap</h3>
+                    <button class="toggle-btn" onclick="toggleDetail(this)">Lihat Detail</button>
+                    <div class="detail">
+                        <p><strong>Bahan:</strong> ayam, kecap manis, bawang bombay...</p>
+                        <p><strong>Cara Masak:</strong> Tumis bawang, masukkan ayam, tambahkan kecap dan air.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Telur Balado -->
+            <div class="card">
+                <img src="foto7.jpg" alt="Telur Balado">
+                <div class="card-body">
+                    <h3>Telur Balado</h3>
+                    <button class="toggle-btn" onclick="toggleDetail(this)">Lihat Detail</button>
+                    <div class="detail">
+                        <p><strong>Bahan:</strong> telur rebus, cabai, bawang merah...</p>
+                        <p><strong>Cara Masak:</strong> Goreng telur, siram dengan sambal balado.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Soto Ayam -->
+            <div class="card">
+                <img src="foto8.jpg" alt="Soto Ayam">
+                <div class="card-body">
+                    <h3>Soto Ayam</h3>
+                    <button class="toggle-btn" onclick="toggleDetail(this)">Lihat Detail</button>
+                    <div class="detail">
+                        <p><strong>Bahan:</strong> ayam, bihun, sereh, kunyit, bawang...</p>
+                        <p><strong>Cara Masak:</strong> Rebus ayam, tumis bumbu, campur, sajikan dengan bihun.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>© 2025 Resep Maria</footer>
+
+    <script>
+        function toggleDetail(button) {
+            const detailDiv = button.nextElementSibling;
+            if (detailDiv.style.display === "none" || detailDiv.style.display === "") {
+                detailDiv.style.display = "block";
+                button.textContent = "Sembunyikan Detail";
+            } else {
+                detailDiv.style.display = "none";
+                button.textContent = "Lihat Detail";
+            }
+        }
+    </script>
+</body>
+</html>
